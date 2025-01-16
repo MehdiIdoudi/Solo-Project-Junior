@@ -57,7 +57,7 @@ export const updateOne  = async (req, res) => {
     }
     
 }
-export const deleteOne = async() => {
+export const deleteOne = async(req,res) => {
     const productId = req.params.id;
     try {
         const product = await Product.findByPk(productId);

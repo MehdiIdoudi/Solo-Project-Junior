@@ -3,7 +3,7 @@ import Options from "./options.jsx";
 import Join from "./joinUs.jsx";
 import axios from "axios";
 import ProductTemplate from "./productTemplate.jsx";
-// import { useNavigate } from "react-router-dom";
+
 
 function NavBar() {
   const [buttonValue, setButtonValue] = useState("Sign In");
@@ -12,7 +12,7 @@ function NavBar() {
   const [joinUsToggle, setJoinUsToggle] = useState(false);
   const [searchContent, setSearchContent] = useState(""); 
 
-  // const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -77,6 +77,9 @@ function NavBar() {
       </div>
       {options && <Options />}
       {joinUsToggle && <Join />}
+      <div>
+        
+      </div>
       <div className="product-list">
         {filteredProducts.map((product) => (
           <ProductTemplate
@@ -93,3 +96,4 @@ function NavBar() {
 }
 
 export default NavBar;
+

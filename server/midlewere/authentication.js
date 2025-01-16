@@ -5,7 +5,7 @@ const verifyToken = (req, res, next) => {
         return res.status(403).send("Not authorized");
     }
     try {
-        const data = jwt.verify(token, "12345"); 
+        const data = jwt.verify(token, "12345");  
         console.log("data", data);
         req.user = data.id;
         next();
@@ -14,3 +14,6 @@ const verifyToken = (req, res, next) => {
     }
 };
 export default verifyToken;
+
+
+

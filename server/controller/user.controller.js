@@ -97,3 +97,25 @@ export const getProfile = async (req, res) => {
         res.status(500).json({ message: "Error getting profile", error: error.message });
     }
 };
+export const addToCard = async (req, res) => {
+    const { cardDetails } = req.body;
+    const userId = req.user;
+    try {
+        const user = await User.findByPk(userId);
+
+        if (!user) {
+            console.log('User not found:', userId);
+            return res.status(404).json({ message: 'User not found' });
+        }
+        await user.update({ cardDetails });
+
+        console.log('User updated successfully:', user.id);
+        const updatedUser = await User.findByPk(userId);
+        console.log('Updated user from database:', updatedUser.cardDetails);
+
+        return res.status(200).json({ message: 'Cart updated successfully', cardDetails });
+    } catch (error) {
+        console.error('Error updating cart:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+};

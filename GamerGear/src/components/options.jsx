@@ -1,14 +1,20 @@
-// import React from 'react'
+import EditProduct from "./editProduct.jsx"
+import { useState } from "react";
 
 function Options() {
   const logOut = ()=>{
     localStorage.removeItem("token");
     window.location.reload()
   }
+  const [editProductToggle, setEditProductToggle] = useState(false)
+  const EditProductToggleChange = ()=>{
+    setEditProductToggle(!editProductToggle)
+  }
   return (
+    <>
     <div className='outside'>
         <div className='inside'>
-            <h4 className="text-h4">Options</h4>   
+            <h4 className="text-h4" onClick={EditProductToggleChange}>Options</h4>   
             <hr/> 
             <h4 className="text-h4">profile</h4>
             <hr/> 
@@ -18,6 +24,8 @@ function Options() {
         </div>
         
     </div>
+    {editProductToggle && <EditProduct/>}
+    </>
   )
 }
 
