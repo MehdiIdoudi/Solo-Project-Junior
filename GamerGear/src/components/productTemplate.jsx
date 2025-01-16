@@ -12,8 +12,7 @@ function ProductTemplate(props) {
     try {
         const profileResponse = await axios.get('http://localhost:3001/api/user/profile', {
             headers: { Authorization: `Bearer ${token}` },
-        });
-        console.log('Profile Response:', profileResponse.data); 
+        }); 
         const currentCardDetails = profileResponse.data.cardDetails || { items: [], total: 0 };
 
         currentCardDetails.items.push({
